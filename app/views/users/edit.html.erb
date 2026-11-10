@@ -1,0 +1,25 @@
+<div class="container mt-5" style="max-width: 500px;">
+  <h1 class="text-center mb-4">ユーザー編集</h1>
+
+  <% @user.errors.full_messages.each do |msg| %>
+    <div class="alert alert-danger py-2"><%= msg %></div>
+  <% end %>
+
+  <%= form_with model: @user do |f| %>
+    <div class="mb-3">
+      <%= f.text_field :employee_number, required: true, placeholder: "社員番号", class: "form-control" %>
+    </div>
+
+    <div class="mb-3">
+      <%= f.password_field :password, autocomplete: "new-password", placeholder: "新しいパスワード（変更しない場合は空欄）", maxlength: 72, class: "form-control" %>
+    </div>
+
+    <div class="mb-4">
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "新しいパスワード（確認）", maxlength: 72, class: "form-control" %>
+    </div>
+
+    <%= f.submit "更新", class: "btn btn-info text-white w-100 mb-3" %>
+  <% end %>
+
+  <%= link_to "戻る", @user, class: "btn btn-outline-secondary w-100" %>
+</div>

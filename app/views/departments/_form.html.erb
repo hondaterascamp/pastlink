@@ -1,0 +1,23 @@
+<h4>部署登録</h4>
+<%= form_with model: department, url: departments_path do |f| %>
+  <% if department.errors.any? %>
+    <div id="error_explanation">
+      <p><%= department.errors.count %> errors prohibited this department from being saved:</p>
+      <ul>
+        <% department.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group mb-3">
+    <%= f.label :title %>
+    <%= f.text_field :title, class: "form-control" %>
+  </div>
+  <div class="form-group mb-3">
+    <%= f.label :body, "Opinion" %>
+    <%= f.text_area :body, class: "form-control" %>
+  </div>
+  <%= f.submit "Create department", class: "btn btn-success" %>
+<% end %>

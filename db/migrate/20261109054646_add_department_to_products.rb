@@ -1,0 +1,5 @@
+class AddDepartmentToProducts < ActiveRecord::Migration[8.0]
+  def change
+    add_reference :products, :department, null: false, foreign_key: true
+  end
+end

@@ -1,0 +1,27 @@
+<div class="container mt-5" style="max-width: 500px;">
+  <h1 class="text-center mb-4">Log in</h1>
+
+  <% if flash[:alert] %>
+    <div class="alert alert-danger py-2"><%= flash[:alert] %></div>
+  <% end %>
+  <% if flash[:notice] %>
+    <div class="alert alert-success py-2"><%= flash[:notice] %></div>
+  <% end %>
+
+  <%= form_with url: session_path do |form| %>
+    <div class="mb-3">
+      <%= form.text_field :employee_number, required: true, autofocus: true, placeholder: "社員番号", class: "form-control" %>
+    </div>
+
+    <div class="mb-4">
+      <%= form.password_field :password, required: true, autocomplete: "current-password", placeholder: "パスワード", maxlength: 72, class: "form-control" %>
+    </div>
+
+    <%= form.submit "Log in", class: "btn btn-info text-white w-100" %>
+  <% end %>
+
+  <div class="text-center mt-3">
+    アカウントをお持ちでない方は
+    <%= link_to "Sign up", new_user_path %>
+  </div>
+</div>

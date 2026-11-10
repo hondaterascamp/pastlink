@@ -1,0 +1,26 @@
+<div class="container mt-5" style="max-width: 500px;">
+  <h1 class="text-center mb-4">ユーザー詳細</h1>
+
+  <% if flash[:notice] %>
+    <div class="alert alert-success py-2"><%= flash[:notice] %></div>
+  <% end %>
+
+  <table class="table">
+    <tr>
+      <th>社員番号</th>
+      <td><%= @user.employee_number %></td>
+    </tr>
+    <tr>
+      <th>登録日</th>
+      <td><%= @user.created_at.strftime("%Y/%m/%d") %></td>
+    </tr>
+  </table>
+
+  <% if @user == Current.user %>
+    <%= link_to "編集", edit_user_path(@user), class: "btn btn-info text-white w-100 mb-3" %>
+    <%= button_to "削除", @user, method: :delete, class: "btn btn-danger w-100 mb-3",
+          form: { data: { turbo_confirm: "本当に削除しますか？" } } %>
+  <% end %>
+
+  <%= link_to "一覧に戻る", users_path, class: "btn btn-outline-secondary w-100" %>
+</div>

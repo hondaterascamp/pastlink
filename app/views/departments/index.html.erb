@@ -1,0 +1,30 @@
+
+<div class="container mt-4" style="max-width: 700px;">
+  <h1 class="mb-4">部署一覧</h1>
+
+  <%= form_with model: @department, class: "mb-4" do |f| %>
+    <% @department.errors.full_messages.each do |msg| %>
+      <div class="alert alert-danger py-2"><%= msg %></div>
+    <% end %>
+
+    <div class="input-group">
+      <%= f.text_field :name, placeholder: "部署名", required: true, class: "form-control" %>
+      <%= f.submit "登録", class: "btn btn-success" %>
+    </div>
+  <% end %>
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Department name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @departments.each do |department| %>
+        <tr>
+          <td><%= link_to department.name, department, class: "text-decoration-none" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
