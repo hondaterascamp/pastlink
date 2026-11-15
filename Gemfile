@@ -62,3 +62,8 @@ group :test do
   gem "selenium-webdriver"
   gem "json", "~> 2.21"
 end
+
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
