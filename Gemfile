@@ -60,7 +60,7 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
-  gem "json", "~> 2.21"
+  gem "json", "~> 3.1"
 end
 
 gem 'dotenv-rails'
