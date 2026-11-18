@@ -24,26 +24,25 @@ test:
 # Store production database in the storage/ directory, which by default
 # is mounted as a persistent Docker volume in config/deploy.yml.
 production:
-  primary:
+  primary: &primary_production
     <<: *default
-    database: <%= ENV['DB_DATABASE'] %>
     adapter: mysql2
     encoding: utf8mb4
     charset: utf8mb4
     collation: utf8mb4_general_ci
+    database: <%= ENV['DB_DATABASE'] %>
     host: <%= ENV['DB_HOST'] %>
     username: <%= ENV['DB_USERNAME'] %>
     password: <%= ENV['DB_PASSWORD'] %>
-    database: storage/production.sqlite3
   cache:
-    <<: *default
-    database: storage/production_cache.sqlite3
+    <<: *primary_production
+    database: <%= ENV['DB_DATABASE'] %>_cache
     migrations_paths: db/cache_migrate
   queue:
-    <<: *default
-    database: storage/production_queue.sqlite3
+    <<: *primary_production
+    database: <%= ENV['DB_DATABASE'] %>_queue
     migrations_paths: db/queue_migrate
   cable:
-    <<: *default
-    database: storage/production_cable.sqlite3
+    <<: *primary_production
+    database: <%= ENV['DB_DATABASE'] %>_cable
     migrations_paths: db/cable_migrate
