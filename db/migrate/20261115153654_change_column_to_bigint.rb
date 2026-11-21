@@ -4,5 +4,9 @@ class ChangeColumnToBigint < ActiveRecord::Migration[8.0]
     change_column :troubles, :machine_id, :bigint
     change_column :troubles, :product_id, :bigint
     change_column :troubles, :user_id, :bigint
+    change_column "users", "department_id", :bigint
+    change_column "machines", "department_id", :bigint
+    change_column "products", "department_id", :bigint
+    change_column "machines", "product_id", :bigint
   end
 end
